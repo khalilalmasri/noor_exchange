@@ -39,7 +39,7 @@ class _pagetowState extends State<pagetow> {
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: ColorPlatform.appbarsecond),
+                          color: ColorPlatform.golden),
                     ),
                   ),
                 ),
@@ -60,7 +60,7 @@ class _pagetowState extends State<pagetow> {
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: ColorPlatform.appbarsecond),
+                          color: ColorPlatform.golden),
                     ),
                   ),
                 ),
@@ -87,7 +87,7 @@ class _pagetowState extends State<pagetow> {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: ColorPlatform.colorfore),
+                              color: ColorPlatform.colorwhite),
                         ),
                         items: [
                           StringPlatform.cityone,
@@ -99,7 +99,7 @@ class _pagetowState extends State<pagetow> {
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
-                                          color: ColorPlatform.colorthree)),
+                                          color: ColorPlatform.colorsix)),
                                   value: e,
                                 ))
                             .toList(),
@@ -132,7 +132,7 @@ class _pagetowState extends State<pagetow> {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: ColorPlatform.colorfore),
+                              color: ColorPlatform.colorwhite),
                         ),
                         items: [
                           StringPlatform.branchone,
@@ -144,7 +144,7 @@ class _pagetowState extends State<pagetow> {
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
-                                          color: ColorPlatform.colorthree)),
+                                          color: ColorPlatform.colorsix)),
                                   value: e,
                                 ))
                             .toList(),

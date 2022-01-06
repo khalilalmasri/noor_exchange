@@ -1,6 +1,6 @@
-import 'package:alnoor/page1.dart';
+import 'package:alnoor/pageone/page1.dart';
 import 'package:alnoor/page2.dart';
-import 'package:alnoor/page3.dart';
+import 'package:alnoor/calculater.dart';
 import 'package:alnoor/page4.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
@@ -18,9 +18,7 @@ class _bodyyState extends State<bodyy> {
     return TabBarView(
       children: [
         pageone(),
-        pagetow(),
-        pagethree(),
-        pagefore(),
+        calculater(),
       ],
     );
   }
