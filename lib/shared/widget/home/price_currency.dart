@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:alnoor/shared/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:alnoor/appbar.dart';
-import '../../colors.dart';
+import '../../them.dart';
 import 'package:alnoor/main.dart';
 
 class PriceCurrency extends StatefulWidget {
@@ -23,7 +23,6 @@ class PriceCurrency extends StatefulWidget {
       required this.name_code_sale,
       required this.name_code_buy})
       : super(key: key);
-
   @override
   _PriceCurrencyState createState() => _PriceCurrencyState();
 }
@@ -43,7 +42,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
               child: Container(
                 alignment: Alignment.center,
                 child: Text(
-                  widget.name_price_buy + ' - ' + widget.name_code_sale,
+                  widget.name_price_buy + '-' + widget.name_price_sale,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -74,7 +73,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                   width: double.infinity,
                   margin: PaddingPlatform.three,
                   child: Text(
-                    widget.name_code_sale + '-' + widget.name_code_buy,
+                    widget.name_code_sale + ' - ' + widget.name_code_buy,
                     style: StylePlatform.stylesecondtile,
                   ),
                 ),

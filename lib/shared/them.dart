@@ -6,7 +6,6 @@ class ColorPlatform {
   static const Color thirddcolor = Color(0xffe2b746);
   static const Color golden = Color(0xffE6B31E);
   static const Color colorwhite = Color(0xffF0ECE3);
-
   static const Color colorsix = Color(0x11000000);
   static const Color colorContainerBackground = Color(0xff181712);
   static const Color colorblack = Color(0xff000000);
@@ -50,7 +49,7 @@ class DecoPlatform {
           Border(bottom: BorderSide(color: ColorPlatform.golden, width: 4)));
   static Decoration decotapbar = BoxDecoration(
       color: ColorPlatform.golden,
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(10),
       border: Border.all(color: ColorPlatform.colorsix, width: 2));
   static Decoration decosaleandbuy = BoxDecoration(
       color: ColorPlatform.colorpackground,

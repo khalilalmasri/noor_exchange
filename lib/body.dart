@@ -1,7 +1,5 @@
-import 'package:alnoor/pageone/page1.dart';
-import 'package:alnoor/page2.dart';
-import 'package:alnoor/calculater.dart';
-import 'package:alnoor/page4.dart';
+import 'package:alnoor/pageone/pricepage.dart';
+import 'package:alnoor/calculaterpage.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
 
@@ -17,7 +15,7 @@ class _bodyyState extends State<bodyy> {
   Widget build(BuildContext context) {
     return TabBarView(
       children: [
-        pageone(),
+        PricePage(),
         calculater(),
       ],
     );

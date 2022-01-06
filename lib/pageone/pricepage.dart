@@ -1,21 +1,21 @@
-import 'package:alnoor/calculater.dart';
+import 'package:alnoor/calculaterpage.dart';
 import 'package:alnoor/shared/widget/adress_bar.dart';
 import 'package:alnoor/shared/widget/home/price_currency.dart';
 import 'package:alnoor/shared/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
-import '../../shared/colors.dart';
+import '../shared/them.dart';
 import 'package:alnoor/main.dart';
 
-class pageone extends StatefulWidget {
-  pageone({Key? key}) : super(key: key);
+class PricePage extends StatefulWidget {
+  PricePage({Key? key}) : super(key: key);
 
   @override
-  _pageoneState createState() => _pageoneState();
+  _PricePageState createState() => _PricePageState();
 }
 
-class _pageoneState extends State<pageone> {
+class _PricePageState extends State<PricePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,8 +45,8 @@ class _pageoneState extends State<pageone> {
               title: '',
             ),
             PriceCurrency(
-              name_code_buy: 'SYP',
-              name_code_sale: 'TL',
+              name_code_buy: 'TL.',
+              name_code_sale: 'SYP',
               name_price_buy: StringPlatform.turky,
               name_price_sale: StringPlatform.syrian,
               price_sale: 54.5,
@@ -56,8 +56,8 @@ class _pageoneState extends State<pageone> {
             PriceCurrency(
               name_code_buy: 'USD',
               name_code_sale: 'TL',
-              name_price_buy: StringPlatform.turky,
-              name_price_sale: StringPlatform.dollar,
+              name_price_buy: StringPlatform.dollar,
+              name_price_sale: StringPlatform.turky,
               price_sale: 54.5,
               price_buy: 56.5,
               title: '',
