@@ -1,6 +1,7 @@
 class StringPlatform {
   static const String currency = "العملات";
-  static const String exchang = "حوالات";
+  static const String advertiz = "إعلانات";
+  static const String exchang = " للتواصل: قسم الصرافة";
   static const String companyname = "شركة النور للحوالات";
   static const String calculator = "الحاسبة";
   static const String graph = " بياني";
@@ -15,9 +16,11 @@ class StringPlatform {
   static const String sale = "مبيع";
   static const String company = "شركة";
   static const String calculaterthe = "حاسبة ال";
-  static const String transfer = "والحوالات";
+  static const String transfer = " للتواصل: قسم الحوالات";
   static const String Title = "عفرين/دوار نيروز";
   static const String phone = "84  222  666  9639+";
+
+  static const String phonetrans = "04 35 664 538 09+";
   static const String turky = "ليرة تركية";
   static const String insertvalue = "   أدخل القيمة بال";
 }

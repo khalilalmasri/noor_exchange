@@ -9,6 +9,8 @@ import '../../words.dart';
 class Calculaterwe extends StatefulWidget {
   final double price_buy;
   final double price_sale;
+  final String price_sale_small;
+  final String price_buy_small;
   final String title;
   final String name_price_cal;
   final String name_price;
@@ -17,6 +19,8 @@ class Calculaterwe extends StatefulWidget {
     Key? key,
     required this.price_buy,
     required this.price_sale,
+    required this.price_sale_small,
+    required this.price_buy_small,
     required this.title,
     required this.name_price_cal,
     required this.name_price,
@@ -139,7 +143,11 @@ class _CalculaterweState extends State<Calculaterwe> {
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      Expanded(flex: 1, child: Container()),
+                      Expanded(
+                          flex: 1,
+                          child: Center(
+                              child: Text(widget.price_buy_small,
+                                  style: StylePlatform.StyleTile))),
                       Expanded(
                           flex: 2,
                           child: Container(
@@ -191,7 +199,14 @@ class _CalculaterweState extends State<Calculaterwe> {
                                           width: 2))),
                             ),
                           )),
-                      Expanded(flex: 1, child: Container()),
+                      Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: Text(
+                              widget.price_sale_small,
+                              style: StylePlatform.StyleTile,
+                            ),
+                          )),
                     ],
                   ),
                 ),

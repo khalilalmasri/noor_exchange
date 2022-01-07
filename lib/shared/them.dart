@@ -16,6 +16,7 @@ class ColorPlatform {
 
 class PaddingPlatform {
   static const EdgeInsets twenty = EdgeInsets.all(20);
+  static const EdgeInsets ten = EdgeInsets.all(10);
   static const EdgeInsets three = EdgeInsets.all(3);
   static const EdgeInsets five = EdgeInsets.all(5);
 }
