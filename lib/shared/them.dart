@@ -41,6 +41,12 @@ class StylePlatform {
       color: ColorPlatform.colorwhite);
   static const TextStyle StyleTabpar =
       TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+  static const TextStyle styleourmessag = TextStyle(
+      fontFamily: "AMINE_MOD",
+      height: 1.5,
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: ColorPlatform.colorwhite);
 }
 
 class DecoPlatform {
@@ -48,6 +54,10 @@ class DecoPlatform {
       color: ColorPlatform.colorsix,
       border:
           Border(bottom: BorderSide(color: ColorPlatform.golden, width: 4)));
+  static Decoration decoourmasseg = BoxDecoration(
+      color: ColorPlatform.colorsix,
+      borderRadius: BorderRadius.circular(25),
+      border: Border.all(color: ColorPlatform.golden, width: 1));
   static Decoration decotapbar = BoxDecoration(
       color: ColorPlatform.golden,
       borderRadius: BorderRadius.circular(10),

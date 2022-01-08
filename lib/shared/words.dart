@@ -2,9 +2,11 @@ class StringPlatform {
   static const String currency = "العملات";
   static const String advertiz = "إعلانات";
   static const String exchang = " للتواصل: قسم الصرافة";
-  static const String companyname = "شركة النور للحوالات";
+  static const String companyname = "شركة النور للصرافة والحوالات";
   static const String calculator = "الحاسبة";
-  static const String graph = " بياني";
+  static const String we = " من نحن";
+  static const String masseg = "رسالتنا";
+  static const String vision = "رؤيتنا";
   static const String contry = "البلد";
   static const String finalrefresh = "آخر تحديث";
   static const String dollarandturky = "دولار أمريكي / ليرة تركية";
@@ -19,8 +21,17 @@ class StringPlatform {
   static const String transfer = " للتواصل: قسم الحوالات";
   static const String Title = "عفرين/دوار نيروز";
   static const String phone = "84  222  666  9639+";
-
   static const String phonetrans = "04 35 664 538 09+";
   static const String turky = "ليرة تركية";
   static const String insertvalue = "   أدخل القيمة بال";
+  static const String ourmasseg =
+      "نسعى لأن نكون الشركة الأكثر حظاً بكسب ثقة زبائنها ، ومصداقية تعاملها، وحلولها الإبداعية من خلال مواكبة التكنولوجيا المتطورة، وقواها العاملة بديناميكية عالية وخدماتها الواسعة في مجال الصرافة والحوالات المالية..";
+  static const String ourvision =
+      "أن نكون الخيار الأول لزبائننا في مجال الصرافة والحوالات المالية في جميع أنحاء العالم.";
+  static const String forcomunication = "معلومات التواصل";
+  static const String transferr = "حوالات";
+  static const String exchange = "صرافة";
+  static const String web = "الموقع";
+  static const String facebook = "فيس بوك";
+  
 }

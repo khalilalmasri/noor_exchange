@@ -17,7 +17,7 @@ class _appbarState extends State<appbar> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: DefaultTabController(
-            length: 3,
+            length: 4,
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: Scaffold(
@@ -56,6 +56,12 @@ class _appbarState extends State<appbar> {
                         Tab(
                           child: Text(
                             StringPlatform.advertiz,
+                            style: StylePlatform.StyleTabpar,
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            StringPlatform.we,
                             style: StylePlatform.StyleTabpar,
                           ),
                         ),
