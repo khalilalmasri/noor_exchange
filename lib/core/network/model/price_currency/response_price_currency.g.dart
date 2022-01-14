@@ -1,0 +1,48 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'response_price_currency.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ListItemsPriceCurrency _$ListItemsPriceCurrencyFromJson(
+    Map<String, dynamic> json) {
+  return ListItemsPriceCurrency(
+    listprice: (json['data'] as List<dynamic>)
+        .map((e) =>
+            ItemOfPriceCurrencyResponse.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
+
+Map<String, dynamic> _$ListItemsPriceCurrencyToJson(
+        ListItemsPriceCurrency instance) =>
+    <String, dynamic>{
+      'data': instance.listprice,
+    };
+
+ItemOfPriceCurrencyResponse _$ItemOfPriceCurrencyResponseFromJson(
+    Map<String, dynamic> json) {
+  return ItemOfPriceCurrencyResponse(
+    currencyBuyCode: json['currency_buy_code'] as String,
+    currencyBuyName: json['currency_buy_name'] as String,
+    currencySellingCode: json['currency_selling_code'] as String,
+    currencySellingName: json['currency_selling_name'] as String,
+    currencySellingPrice: json['currency_selling_price'] as String,
+    currencyBuyPrice: json['currency_buy_price'] as String,
+    lastUpdate: DateTime.parse(json['last_update'] as String),
+  );
+}
+
+Map<String, dynamic> _$ItemOfPriceCurrencyResponseToJson(
+        ItemOfPriceCurrencyResponse instance) =>
+    <String, dynamic>{
+      'currency_buy_code': instance.currencyBuyCode,
+      'currency_buy_name': instance.currencyBuyName,
+      'currency_selling_code': instance.currencySellingCode,
+      'currency_selling_name': instance.currencySellingName,
+      'currency_selling_price': instance.currencySellingPrice,
+      'currency_buy_price': instance.currencyBuyPrice,
+      'last_update': instance.lastUpdate.toIso8601String(),
+    };
