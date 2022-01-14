@@ -1,7 +1,9 @@
 class StringPlatform {
+
   static const String currency = "العملات";
   static const String advertiz = "إعلانات";
   static const String exchang = " للتواصل: قسم الصرافة";
+  static const String companynameDev = "شركة النور للصرافة والحوالات تحت التطوير";
   static const String companyname = "شركة النور للصرافة والحوالات";
   static const String calculator = "الحاسبة";
   static const String we = " من نحن";
@@ -33,5 +35,6 @@ class StringPlatform {
   static const String exchange = "صرافة";
   static const String web = "الموقع";
   static const String facebook = "فيس بوك";
-  
+  static const String no_internet = "انت غير متصل بالنت الرجاء إعادة المحاولة ";
+
 }

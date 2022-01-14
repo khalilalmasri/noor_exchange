@@ -5,14 +5,15 @@ import 'package:flutter/services.dart';
 import 'shared/them.dart';
 import '../shared/words.dart';
 
-class appbar extends StatefulWidget {
-  appbar({Key? key}) : super(key: key);
+class AppBarWidget extends StatefulWidget {
+  static const routeName = "/app_bar";
+  AppBarWidget({Key? key}) : super(key: key);
 
   @override
-  _appbarState createState() => _appbarState();
+  _AppBarWidgetState createState() => _AppBarWidgetState();
 }
 
-class _appbarState extends State<appbar> {
+class _AppBarWidgetState extends State<AppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +45,7 @@ class _appbarState extends State<appbar> {
                       indicatorColor: ColorPlatform.golden,
                       labelPadding: EdgeInsets.only(bottom: 0),
                       indicatorWeight: 2,
-                      tabs: const [
+                      tabs:  [
                         Tab(
                           child: Text(StringPlatform.currency,
                               style: StylePlatform.StyleTabpar),

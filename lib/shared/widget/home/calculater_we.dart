@@ -6,39 +6,43 @@ import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
 import '../../words.dart';
 
-class Calculaterwe extends StatefulWidget {
+class CalculatorWidget extends StatefulWidget {
   final double price_buy;
   final double price_sale;
-  final String price_sale_small;
-  final String price_buy_small;
-  final String title;
+
   final String name_price_cal;
   final String name_price;
   final String name_price_result;
-  const Calculaterwe({
+
+  const CalculatorWidget({
     Key? key,
     required this.price_buy,
     required this.price_sale,
-    required this.price_sale_small,
-    required this.price_buy_small,
-    required this.title,
     required this.name_price_cal,
     required this.name_price,
     required this.name_price_result,
   }) : super(key: key);
 
   @override
-  _CalculaterweState createState() => _CalculaterweState();
+  _CalculatorWidgetState createState() => _CalculatorWidgetState();
 }
 
-class _CalculaterweState extends State<Calculaterwe> {
-  double syusbuy = 3500;
-  double syussale = 3600;
+class _CalculatorWidgetState extends State<CalculatorWidget> {
+  late TextEditingController controllerQtyBuy;
+  late TextEditingController controllerQtySale;
   String uss1 = "";
   String uss2 = "";
   String m = "";
   String w = "";
-  String a = "";
+
+
+  @override
+  void initState() {
+    controllerQtyBuy = TextEditingController();
+    controllerQtySale = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,7 +108,7 @@ class _CalculaterweState extends State<Calculaterwe> {
                           child: MaterialButton(
                             onPressed: () {
                               setState(() {
-                                a = uss1;
+                                controllerQtyBuy.text = uss1;
                               });
                             },
                             child: Text(StringPlatform.buy,
@@ -128,7 +132,7 @@ class _CalculaterweState extends State<Calculaterwe> {
                           child: MaterialButton(
                             onPressed: () {
                               setState(() {
-                                a = uss2;
+                                controllerQtyBuy.text = uss2;
                               });
                             },
                             child: Text(StringPlatform.sale,
@@ -146,31 +150,34 @@ class _CalculaterweState extends State<Calculaterwe> {
                       Expanded(
                           flex: 1,
                           child: Center(
-                              child: Text(widget.price_buy_small,
+                              child: Text(widget.price_sale.toString(),
                                   style: StylePlatform.StyleTile))),
                       Expanded(
                           flex: 2,
                           child: Container(
                             height: 40,
                             child: TextFormField(
+                              controller: controllerQtySale,
                               style: StylePlatform.stylesaleandbuywhite,
                               onChanged: (w) {
                                 setState(() {
                                   w.isNotEmpty
-                                      ? m = (double.parse(w) * widget.price_buy)
-                                          .toString()
+                                      ? m =
+                                          (double.parse(w) * widget.price_sale)
+                                              .toString()
                                       : m = "";
                                   w.isNotEmpty
                                       ? uss1 =
-                                          (double.parse(w) * widget.price_buy)
+                                          (double.parse(w) * widget.price_sale)
                                               .toString()
                                       : uss1 = "";
                                   w.isNotEmpty
                                       ? uss2 =
-                                          (double.parse(w) * widget.price_sale)
+                                          (double.parse(w) * widget.price_buy)
                                               .toString()
                                       : uss2 = "";
-                                  a = m;
+
+                                  controllerQtyBuy.text = m;
                                 });
                               },
                               cursorColor: ColorPlatform.thirddcolor,
@@ -203,7 +210,7 @@ class _CalculaterweState extends State<Calculaterwe> {
                           flex: 1,
                           child: Center(
                             child: Text(
-                              widget.price_sale_small,
+                              widget.price_buy.toString(),
                               style: StylePlatform.StyleTile,
                             ),
                           )),
@@ -222,9 +229,55 @@ class _CalculaterweState extends State<Calculaterwe> {
                         padding: PaddingPlatform.three,
                         height: 35,
                         margin: const EdgeInsets.symmetric(vertical: 3),
-                        child: Text(
-                          " $a",
-                          style: StylePlatform.stylesaleandbuywhite,
+                        child: Container(
+                          height: 40,
+                          child: TextFormField(
+                            controller: controllerQtyBuy,
+                            style: StylePlatform.stylesaleandbuywhite,
+                            onChanged: (w) {
+                              setState(() {
+                                w.isNotEmpty
+                                    ? m = (double.parse(w) / widget.price_sale).toStringAsFixed(2)
+                                        .toString()
+                                    : m = "";
+                                w.isNotEmpty
+                                    ? uss1 =
+                                        (double.parse(w) / widget.price_sale).toStringAsFixed(2)
+                                            .toString()
+                                    : uss1 = "";
+                                w.isNotEmpty
+                                    ? uss2 =
+                                        (double.parse(w) / widget.price_buy).toStringAsFixed(2)
+                                            .toString()
+                                    : uss2 = "";
+                                controllerQtySale.text = m;
+                              });
+                            },
+                            cursorColor: ColorPlatform.thirddcolor,
+                            keyboardType: TextInputType.number,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                    color: Colors.white70, fontSize: 10),
+                                hintText: StringPlatform.insertvalue +
+                                    '' +
+                                    widget.name_price_result,
+                                /* suffixIcon: Icon(
+                                    Icons.monetization_on_sharp,
+                                    color: ColorPlatform.secondcolor,
+                                  ),*/
+                                focusColor: ColorPlatform.secondcolor,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide(
+                                      color: ColorPlatform.secondcolor,
+                                      width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: ColorPlatform.secondcolor,
+                                        width: 2))),
+                          ),
                         ),
                       ),
                     ),

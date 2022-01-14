@@ -13,6 +13,7 @@ class PriceCurrency extends StatefulWidget {
   final String name_price_sale;
   final String name_code_sale;
   final String name_code_buy;
+
   const PriceCurrency(
       {Key? key,
       required this.price_buy,
@@ -23,6 +24,7 @@ class PriceCurrency extends StatefulWidget {
       required this.name_code_sale,
       required this.name_code_buy})
       : super(key: key);
+
   @override
   _PriceCurrencyState createState() => _PriceCurrencyState();
 }
@@ -42,7 +44,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
               child: Container(
                 alignment: Alignment.center,
                 child: Text(
-                  widget.name_price_buy + '-' + widget.name_price_sale,
+                  widget.name_price_sale + ' - ' + widget.name_price_buy,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -73,7 +75,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                   width: double.infinity,
                   margin: PaddingPlatform.three,
                   child: Text(
-                    widget.name_code_sale + ' - ' + widget.name_code_buy,
+                    widget.name_code_buy  + ' - ' + widget.name_code_sale,
                     style: StylePlatform.stylesecondtile,
                   ),
                 ),
@@ -89,8 +91,8 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                           decoration: DecoPlatform.decosaleandbuy,
                           padding: PaddingPlatform.three,
                           height: 40,
-                          margin: const EdgeInsets.symmetric(vertical: 3),
-                          child: const Text(StringPlatform.buy,
+                          margin:  EdgeInsets.symmetric(vertical: 3),
+                          child:  Text(StringPlatform.buy,
                               style: StylePlatform.stylesaleandbuy),
                         ),
                       ),
@@ -128,7 +130,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                         height: 40,
                         margin: const EdgeInsets.symmetric(vertical: 3),
                         child: Text(
-                          "999.99",
+                          widget.price_sale.toString(),
                           style: StylePlatform.stylesaleandbuy,
                         ),
                       ),
@@ -147,7 +149,7 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                         padding: PaddingPlatform.three,
                         height: 40,
                         margin: const EdgeInsets.symmetric(vertical: 3),
-                        child: Text("999.99",
+                        child: Text(widget.price_buy.toString(),
                             style: StylePlatform.stylesaleandbuy),
                       ),
                     ),

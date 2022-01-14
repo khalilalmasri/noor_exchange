@@ -4,15 +4,16 @@ import 'package:alnoor/shared/widget/adress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
+import 'package:intl/intl.dart';
 import '../../words.dart';
 
 class Refreshwi extends StatefulWidget {
-  final String Time;
-  final String Data;
+
+  final DateTime LastUpdate;
   const Refreshwi({
     Key? key,
-    required this.Time,
-    required this.Data,
+
+    required this.LastUpdate,
   }) : super(key: key);
 
   @override
@@ -36,23 +37,19 @@ class _RefreshwiState extends State<Refreshwi> {
             ),
           ),
           Expanded(
-            flex: 3,
-            child: Center(
-              child: Text(widget.Data, style: StylePlatform.StyleTile),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Center(
-              child: Text(widget.Time, style: StylePlatform.StyleTile),
-            ),
-          ),
-          Expanded(
             flex: 6,
-            child: Center(),
+            child: Center(
+              child: Text(DateFormat('yyyy-MM-dd') .add_jms().format(widget.LastUpdate), style: TextStyle(
+                  fontSize: 20,
+
+                  color: ColorPlatform.colorwhite)),
+            ),
           ),
+
+
         ],
       ),
     );
   }
+
 }

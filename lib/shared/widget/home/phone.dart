@@ -1,12 +1,14 @@
+import 'package:alnoor/core/network/api/api_price_currency_constant.dart';
 import 'package:alnoor/main.dart';
 import 'package:alnoor/shared/them.dart';
 import 'package:alnoor/shared/widget/adress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../words.dart';
 
-class Phonewi extends StatefulWidget {
+class PhoneContactUsWidget extends StatefulWidget {
   /*final String phone_exchange;
   final String phone_transfer;
   const Phonewi({
@@ -16,10 +18,10 @@ class Phonewi extends StatefulWidget {
   }) : super(key: key);*/
 
   @override
-  _PhonewiState createState() => _PhonewiState();
+  _PhoneContactUsWidgetState createState() => _PhoneContactUsWidgetState();
 }
 
-class _PhonewiState extends State<Phonewi> {
+class _PhoneContactUsWidgetState extends State<PhoneContactUsWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +32,11 @@ class _PhonewiState extends State<Phonewi> {
               flex: 2,
               child: Center(
                   child: TextButton(
-                onPressed: () {},
+                onPressed:  () async {
+                  if (!await launch(
+                      'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneManager}'))
+                    throw 'Could not launch ';
+                },
                 child: Text(
                   StringPlatform.exchang,
                   style: StylePlatform.StyleTile,
@@ -55,7 +61,11 @@ class _PhonewiState extends State<Phonewi> {
             flex: 2,
             child: Center(
                 child: TextButton(
-              onPressed: () {},
+              onPressed:() async {
+                if (!await launch(
+                    'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneAssistant}'))
+                  throw 'Could not launch ';
+              },
               child:
                   Text(StringPlatform.transfer, style: StylePlatform.StyleTile),
             )),

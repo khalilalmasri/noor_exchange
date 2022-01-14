@@ -1,10 +1,10 @@
-import 'package:alnoor/advertiz.dart';
-import 'package:alnoor/pageone/pricepage.dart';
-import 'package:alnoor/calculaterpage.dart';
+import 'package:alnoor/ui/tab_pages/advertiz.dart';
+import 'package:alnoor/ui/tab_pages/pricepage.dart';
+import 'package:alnoor/ui/tab_pages/calculaterpage.dart';
 import 'package:alnoor/shared/widget/home/we.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
-import 'package:alnoor/wewe.dart';
+import 'package:alnoor/ui/tab_pages/about_screen.dart';
 
 class tabbarv extends StatefulWidget {
   tabbarv({Key? key}) : super(key: key);
@@ -19,9 +19,9 @@ class _tabbarvState extends State<tabbarv> {
     return TabBarView(
       children: [
         PricePage(),
-        calculater(),
-        adv(),
-        wewe(),
+        CalculatorScreen(),
+        AdScreen(),
+        AboutUsScreen(),
       ],
     );
   }

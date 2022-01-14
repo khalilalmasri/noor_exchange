@@ -8,24 +8,31 @@ import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
 import '../../../../shared/words.dart';
 
-class we extends StatefulWidget {
-  final String Phone_One;
-  final String Phone_tow;
-  final String web_web;
-  final String face_book;
-  const we({
+class AboutUsWidget extends StatefulWidget {
+  final String manager_phone;
+  final String assistant_phone;
+  final String website;
+  final String facebook;
+  final String company_name;
+  final String our_message;
+  final String our_vision;
+
+  const AboutUsWidget({
     Key? key,
-    required this.Phone_One,
-    required this.Phone_tow,
-    required this.web_web,
-    required this.face_book,
+    required this.manager_phone,
+    required this.assistant_phone,
+    required this.website,
+    required this.facebook,
+    required this.company_name,
+    required this.our_message,
+    required this.our_vision,
   }) : super(key: key);
 
   @override
-  _weState createState() => _weState();
+  _AboutUsWidgetState createState() => _AboutUsWidgetState();
 }
 
-class _weState extends State<we> {
+class _AboutUsWidgetState extends State<AboutUsWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,7 +49,7 @@ class _weState extends State<we> {
             decoration: DecoPlatform.decosaleandbuyButton,
             child: Center(
               child: Text(
-                StringPlatform.companyname,
+                widget.company_name,
                 style: StylePlatform.stylesaleandbuy,
               ),
             ),
@@ -62,7 +69,7 @@ class _weState extends State<we> {
             margin: PaddingPlatform.five,
             padding: PaddingPlatform.twenty,
             decoration: DecoPlatform.decoourmasseg,
-            child: Text(StringPlatform.ourmasseg,
+            child: Text(widget.our_message,
                 textAlign: TextAlign.center,
                 style: StylePlatform.styleourmessag),
           ),
@@ -81,7 +88,7 @@ class _weState extends State<we> {
             margin: PaddingPlatform.five,
             padding: PaddingPlatform.twenty,
             decoration: DecoPlatform.decoourmasseg,
-            child: Text(StringPlatform.ourvision,
+            child: Text(widget.our_vision,
                 textAlign: TextAlign.center,
                 style: StylePlatform.styleourmessag),
           ),
@@ -119,7 +126,7 @@ class _weState extends State<we> {
                     height: 40,
                     margin: PaddingPlatform.five,
                     child: GestureDetector(
-                      child: Text(widget.Phone_One,
+                      child: Text(widget.manager_phone,
                           style: StylePlatform.styleourmessag),
                     ),
                   ),
@@ -152,7 +159,7 @@ class _weState extends State<we> {
                     height: 40,
                     margin: PaddingPlatform.five,
                     child: GestureDetector(
-                      child: Text(widget.Phone_tow,
+                      child: Text(widget.assistant_phone,
                           style: StylePlatform.styleourmessag),
                     ),
                   ),
@@ -185,7 +192,7 @@ class _weState extends State<we> {
                     height: 40,
                     margin: PaddingPlatform.five,
                     child: GestureDetector(
-                      child: Text(widget.web_web,
+                      child: Text(widget.website != null ? widget.website : '',
                           style: StylePlatform.styleourmessag),
                     ),
                   ),
@@ -218,7 +225,8 @@ class _weState extends State<we> {
                     height: 40,
                     margin: PaddingPlatform.five,
                     child: GestureDetector(
-                      child: Text(widget.face_book,
+                      child: Text(
+                          widget.facebook != null ? widget.facebook : '',
                           style: StylePlatform.styleourmessag),
                     ),
                   ),
