@@ -45,7 +45,7 @@ class _PricePageState extends State<PricePage> {
             context.read<SplashBloc>().add(LoadPriceData());
           },
         );
-      }else if (state is SplashAdsNoInternetConnection) {
+      } else if (state is SplashAdsNoInternetConnection) {
         return _pageContent();
       } else
         return Text('no bloc');
@@ -67,17 +67,14 @@ class _PricePageState extends State<PricePage> {
       ));
     }).toList();
     listPrice.insert(0, PhoneContactUsWidget());
-    listPrice.insert(
-        listPrice.length,
-        AdressBar(
-          adress: StringPlatform.Title,
-          phone_number: StringPlatform.phone,
-        ));
+    listPrice.insert(listPrice.length, AdressBar());
     listPrice.insert(
         listPrice.length,
         Refreshwi(
-          LastUpdate:
-              ApiPriceCurrencyConstant.pricesCurrencyResponse[0].lastUpdate,
+          LastUpdateDate:
+              ApiPriceCurrencyConstant.pricesCurrencyResponse[0].lastUpdateDate,
+          LastUpdateTime:
+              ApiPriceCurrencyConstant.pricesCurrencyResponse[0].lastUpdateTime,
         ));
     return Container(
         //main container

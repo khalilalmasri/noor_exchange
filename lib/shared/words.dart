@@ -19,7 +19,7 @@ class StringPlatform {
   static const String buy = "شراء";
   static const String sale = "مبيع";
   static const String company = "شركة";
-  static const String calculaterthe = "حاسبة ال";
+  static const String calculaterthe = "حاسبة  ";
   static const String transfer = " للتواصل: قسم الحوالات";
   static const String Title = "عفرين/دوار نيروز";
   static const String phone = "84  222  666  9639+";
@@ -36,5 +36,6 @@ class StringPlatform {
   static const String web = "الموقع";
   static const String facebook = "فيس بوك";
   static const String no_internet = "انت غير متصل بالنت الرجاء إعادة المحاولة ";
+  static const String note = "ملاحظة ";
 
 }

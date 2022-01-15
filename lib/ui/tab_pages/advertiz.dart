@@ -105,10 +105,7 @@ class _AdScreenState extends State<AdScreen> {
                 child: ListView(
                     children: ads.map((e) => e).toList()),
               )),
-          AdressBar(
-            adress: StringPlatform.Title,
-            phone_number: StringPlatform.phone,
-          ),
+          AdressBar(),
         ],
       ),
     );

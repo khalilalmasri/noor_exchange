@@ -71,5 +71,16 @@ class DecoPlatform {
   );
   static Decoration decosaleandbuyButton = BoxDecoration(
       color: ColorPlatform.appbarcolor,
-      borderRadius: BorderRadius.circular(30));
+      borderRadius: BorderRadius.circular(30),
+  );
+  static Decoration buttonContactWhatsUp = BoxDecoration(
+      color: ColorPlatform.appbarcolor,
+      borderRadius: BorderRadius.circular(30),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey,
+        offset: Offset(0.0, 1.0), //(x,y)
+        blurRadius: 6.0,
+      ),
+    ],);
 }

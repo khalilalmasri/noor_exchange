@@ -30,11 +30,14 @@ class CalculatorWidget extends StatefulWidget {
 class _CalculatorWidgetState extends State<CalculatorWidget> {
   late TextEditingController controllerQtyBuy;
   late TextEditingController controllerQtySale;
-  String uss1 = "";
-  String uss2 = "";
-  String m = "";
-  String w = "";
+  bool main_currency = false;
+  bool secondary_currency = false;
 
+  String result_buy_calculate = "";
+  String result_sale_calculate = "";
+  String result_sale_calculate_secondary = "";
+  String result_buy_calculate_secondary = "";
+  String m = "";
 
   @override
   void initState() {
@@ -57,7 +60,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
               child: Container(
                 alignment: Alignment.center,
                 child: Text(
-                  StringPlatform.calculaterthe + '' + widget.name_price_cal,
+                  StringPlatform.calculaterthe + '' + widget.name_price_cal + ' - '+widget.name_price_result,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -79,23 +82,9 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
             decoration: DecoPlatform.DecoFirstMainContainer,
             child: Column(
               children: [
-                /* Container(
-                        // أول أول
-                        alignment: Alignment.center,
-                        decoration: DecoPlatform.decosecondcontailer,
-                        padding: PaddingPlatform.five,
-                        height: 25,
-                        width: double.infinity,
-                        margin: PaddingPlatform.three,
-                        child: Text(
-                          "00000",
-                          style: StylePlatform.stylesecondtile,
-                        ),
-                      ),*/
                 Container(
                   margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
                   child: Row(
-                    //بداية السطر الثاني في العمود الأول
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
@@ -108,7 +97,17 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                           child: MaterialButton(
                             onPressed: () {
                               setState(() {
-                                controllerQtyBuy.text = uss1;
+                                if (main_currency) {
+                                  result_buy_calculate.isNotEmpty
+                                      ? controllerQtyBuy.text =
+                                          result_buy_calculate
+                                      : controllerQtyBuy.text;
+                                } else {
+                                  result_buy_calculate_secondary.isNotEmpty
+                                      ? controllerQtySale.text =
+                                          result_buy_calculate_secondary
+                                      : controllerQtySale.text;
+                                }
                               });
                             },
                             child: Text(StringPlatform.buy,
@@ -122,7 +121,6 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                         child: Container(),
                       ),
                       Expanded(
-                        // نهاية السطر الثاني في العمود الأول
                         flex: 1,
                         child: Container(
                           alignment: Alignment.center,
@@ -132,7 +130,17 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                           child: MaterialButton(
                             onPressed: () {
                               setState(() {
-                                controllerQtyBuy.text = uss2;
+                                if (main_currency) {
+                                  result_sale_calculate.isNotEmpty
+                                      ? controllerQtyBuy.text =
+                                          result_sale_calculate
+                                      : controllerQtyBuy.text;
+                                } else {
+                                  result_sale_calculate_secondary.isNotEmpty
+                                      ? controllerQtySale.text =
+                                          result_sale_calculate_secondary
+                                      : controllerQtySale.text;
+                                }
                               });
                             },
                             child: Text(StringPlatform.sale,
@@ -159,23 +167,27 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                             child: TextFormField(
                               controller: controllerQtySale,
                               style: StylePlatform.stylesaleandbuywhite,
-                              onChanged: (w) {
+                              onChanged: (value) {
+                                main_currency = true;
+                                secondary_currency = false;
                                 setState(() {
-                                  w.isNotEmpty
-                                      ? m =
-                                          (double.parse(w) * widget.price_sale)
-                                              .toString()
+                                  value.isNotEmpty
+                                      ? m = (double.parse(value) *
+                                              widget.price_sale)
+                                          .toString()
                                       : m = "";
-                                  w.isNotEmpty
-                                      ? uss1 =
-                                          (double.parse(w) * widget.price_sale)
+                                  value.isNotEmpty
+                                      ? result_buy_calculate =
+                                          (double.parse(value) *
+                                                  widget.price_sale)
                                               .toString()
-                                      : uss1 = "";
-                                  w.isNotEmpty
-                                      ? uss2 =
-                                          (double.parse(w) * widget.price_buy)
+                                      : result_buy_calculate = "";
+                                  value.isNotEmpty
+                                      ? result_sale_calculate =
+                                          (double.parse(value) *
+                                                  widget.price_buy)
                                               .toString()
-                                      : uss2 = "";
+                                      : result_sale_calculate = "";
 
                                   controllerQtyBuy.text = m;
                                 });
@@ -189,10 +201,6 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                                   hintText: StringPlatform.insertvalue +
                                       '' +
                                       widget.name_price,
-                                  /* suffixIcon: Icon(
-                                    Icons.monetization_on_sharp,
-                                    color: ColorPlatform.secondcolor,
-                                  ),*/
                                   focusColor: ColorPlatform.secondcolor,
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -218,7 +226,6 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                   ),
                 ),
                 Row(
-                  //بداية السطر الثالث في العمود الأول
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
@@ -234,22 +241,29 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                           child: TextFormField(
                             controller: controllerQtyBuy,
                             style: StylePlatform.stylesaleandbuywhite,
-                            onChanged: (w) {
+                            onChanged: (value) {
+                              main_currency = false;
+                              secondary_currency = true;
                               setState(() {
-                                w.isNotEmpty
-                                    ? m = (double.parse(w) / widget.price_sale).toStringAsFixed(2)
+                                value.isNotEmpty
+                                    ? m = (double.parse(value) /
+                                            widget.price_sale)
+                                        .toStringAsFixed(2)
                                         .toString()
                                     : m = "";
-                                w.isNotEmpty
-                                    ? uss1 =
-                                        (double.parse(w) / widget.price_sale).toStringAsFixed(2)
+                                value.isNotEmpty
+                                    ? result_buy_calculate_secondary =
+                                        (double.parse(value) /
+                                                widget.price_sale)
+                                            .toStringAsFixed(2)
                                             .toString()
-                                    : uss1 = "";
-                                w.isNotEmpty
-                                    ? uss2 =
-                                        (double.parse(w) / widget.price_buy).toStringAsFixed(2)
+                                    : result_buy_calculate_secondary = "";
+                                value.isNotEmpty
+                                    ? result_sale_calculate_secondary =
+                                        (double.parse(value) / widget.price_buy)
+                                            .toStringAsFixed(2)
                                             .toString()
-                                    : uss2 = "";
+                                    : result_sale_calculate_secondary = "";
                                 controllerQtySale.text = m;
                               });
                             },
@@ -262,10 +276,6 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                                 hintText: StringPlatform.insertvalue +
                                     '' +
                                     widget.name_price_result,
-                                /* suffixIcon: Icon(
-                                    Icons.monetization_on_sharp,
-                                    color: ColorPlatform.secondcolor,
-                                  ),*/
                                 focusColor: ColorPlatform.secondcolor,
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
@@ -287,7 +297,6 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                       child: Container(),
                     ),
                     Expanded(
-                      // نهاية السطر الثاني في العمود الأول
                       flex: 4,
                       child: Container(
                         alignment: Alignment.center,
@@ -296,7 +305,10 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                         height: 35,
                         margin: const EdgeInsets.symmetric(vertical: 3),
                         child: Text(widget.name_price_result,
-                            style: StylePlatform.stylesaleandbuywhite),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: ColorPlatform.colorwhite)),
                       ),
                     ),
                   ],

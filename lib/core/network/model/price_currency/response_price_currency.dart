@@ -31,7 +31,8 @@ class ItemOfPriceCurrencyResponse extends Equatable {
     required this.currencySellingName,
     required this.currencySellingPrice,
     required this.currencyBuyPrice,
-    required this.lastUpdate,
+    required this.lastUpdateDate,
+    required this.lastUpdateTime,
   });
   @JsonKey(name: 'currency_buy_code')
   final String currencyBuyCode;
@@ -51,8 +52,11 @@ class ItemOfPriceCurrencyResponse extends Equatable {
   @JsonKey(name: 'currency_buy_price')
   final String currencyBuyPrice;
 
-  @JsonKey(name: 'last_update')
-  final DateTime lastUpdate;
+  @JsonKey(name: 'last_update_date')
+  final String lastUpdateDate;
+
+  @JsonKey(name: 'last_update_time')
+  final String lastUpdateTime;
 
 
   @override
@@ -63,7 +67,8 @@ class ItemOfPriceCurrencyResponse extends Equatable {
     currencySellingName,
     currencySellingPrice,
     currencyBuyPrice,
-    lastUpdate,
+    lastUpdateDate,
+    lastUpdateTime,
   ];
   factory ItemOfPriceCurrencyResponse.fromJson(Map<String, dynamic> json) =>
       _$ItemOfPriceCurrencyResponseFromJson(json);

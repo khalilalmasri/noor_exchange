@@ -9,11 +9,12 @@ import '../../words.dart';
 
 class Refreshwi extends StatefulWidget {
 
-  final DateTime LastUpdate;
+  final String LastUpdateDate;
+  final String LastUpdateTime;
   const Refreshwi({
     Key? key,
 
-    required this.LastUpdate,
+    required this.LastUpdateDate,required this.LastUpdateTime,
   }) : super(key: key);
 
   @override
@@ -39,7 +40,17 @@ class _RefreshwiState extends State<Refreshwi> {
           Expanded(
             flex: 6,
             child: Center(
-              child: Text(DateFormat('yyyy-MM-dd') .add_jms().format(widget.LastUpdate), style: TextStyle(
+              child: Text((widget.LastUpdateDate), style: TextStyle(
+                  fontSize: 20,
+
+                  color: ColorPlatform.colorwhite)),
+            ),
+          ),
+
+          Expanded(
+            flex: 6,
+            child: Center(
+              child: Text((widget.LastUpdateTime), style: TextStyle(
                   fontSize: 20,
 
                   color: ColorPlatform.colorwhite)),

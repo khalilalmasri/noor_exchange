@@ -36,10 +36,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     listPrice.insert(0, PhoneContactUsWidget());
     listPrice.insert(
         listPrice.length,
-        AdressBar(
-          adress: StringPlatform.Title,
-          phone_number: StringPlatform.phone,
-        ));
+        AdressBar()
+    );
 
     return Container(
       decoration: BoxDecoration(

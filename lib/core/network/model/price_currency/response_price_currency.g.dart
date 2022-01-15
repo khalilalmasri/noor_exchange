@@ -31,7 +31,8 @@ ItemOfPriceCurrencyResponse _$ItemOfPriceCurrencyResponseFromJson(
     currencySellingName: json['currency_selling_name'] as String,
     currencySellingPrice: json['currency_selling_price'] as String,
     currencyBuyPrice: json['currency_buy_price'] as String,
-    lastUpdate: DateTime.parse(json['last_update'] as String),
+    lastUpdateDate: json['last_update_date'] as String,
+    lastUpdateTime: json['last_update_time'] as String,
   );
 }
 
@@ -44,5 +45,6 @@ Map<String, dynamic> _$ItemOfPriceCurrencyResponseToJson(
       'currency_selling_name': instance.currencySellingName,
       'currency_selling_price': instance.currencySellingPrice,
       'currency_buy_price': instance.currencyBuyPrice,
-      'last_update': instance.lastUpdate.toIso8601String(),
+      'last_update_date': instance.lastUpdateDate,
+      'last_update_time': instance.lastUpdateTime,
     };

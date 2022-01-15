@@ -29,46 +29,45 @@ class _PhoneContactUsWidgetState extends State<PhoneContactUsWidget> {
       child: Row(
         children: [
           Expanded(
-              flex: 2,
-              child: Center(
-                  child: TextButton(
-                onPressed:  () async {
-                  if (!await launch(
-                      'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneManager}'))
-                    throw 'Could not launch ';
-                },
-                child: Text(
-                  StringPlatform.exchang,
-                  style: StylePlatform.StyleTile,
-                ),
-              ))),
-          /* Expanded(
-            flex: 5,
-            child: Center(
-              child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    widget.phone_exchange,
-                    style: StylePlatform.StyleTile,
-                  )),
-            ),
-          ),*/
+              flex: 3,
+              child: Container(
+                  alignment: Alignment.center,
+                  decoration: DecoPlatform.buttonContactWhatsUp,
+                  height: 40,
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: MaterialButton(
+                    onPressed: () async {
+                      if (!await launch(
+                          'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneManager}'))
+                        throw 'Could not launch ';
+                    },
+                    child: Text(
+                      StringPlatform.exchang,
+                      style: StylePlatform.StyleTile,
+                    ),
+                  ))),
+
           Expanded(
             flex: 1,
             child: Container(),
           ),
           Expanded(
-            flex: 2,
-            child: Center(
-                child: TextButton(
-              onPressed:() async {
-                if (!await launch(
-                    'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneAssistant}'))
-                  throw 'Could not launch ';
-              },
-              child:
-                  Text(StringPlatform.transfer, style: StylePlatform.StyleTile),
-            )),
+            flex: 3,
+            child: Container(
+                alignment: Alignment.center,
+                decoration: DecoPlatform.buttonContactWhatsUp,
+
+                height: 40,
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                child: MaterialButton(
+                  onPressed: () async {
+                    if (!await launch(
+                        'https://wa.me/${ApiPriceCurrencyConstant.aboutUs!.value.phoneAssistant}'))
+                      throw 'Could not launch ';
+                  },
+                  child: Text(StringPlatform.transfer,
+                      style: StylePlatform.StyleTile),
+                )),
           ),
           /* Expanded(
             flex: 5,

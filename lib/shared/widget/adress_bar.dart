@@ -1,11 +1,11 @@
+import 'package:alnoor/core/network/api/api_price_currency_constant.dart';
 import 'package:flutter/material.dart';
 import '../them.dart';
 import '../words.dart';
 
 class AdressBar extends StatelessWidget {
-  final String adress;
-  final String phone_number;
-  const AdressBar({Key? key, required this.adress, required this.phone_number})
+
+  const AdressBar({Key? key})
       : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class AdressBar extends StatelessWidget {
             flex: 3,
             child: Center(
               child: Text(
-                adress,
+                ApiPriceCurrencyConstant.aboutUs!.value.insta,//address is insta from server,
                 style: StylePlatform.StyleTile,
               ),
             ),
@@ -34,7 +34,7 @@ class AdressBar extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Center(
-              child: Text(phone_number, style: StylePlatform.StyleTile),
+              child: Text(ApiPriceCurrencyConstant.aboutUs!.value.phoneManager =='963966622284'? StringPlatform.phone:ApiPriceCurrencyConstant.aboutUs!.value.phoneManager, style: StylePlatform.StyleTile),
             ),
           ),
           Expanded(

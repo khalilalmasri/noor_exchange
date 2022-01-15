@@ -16,6 +16,7 @@ class AboutUsWidget extends StatefulWidget {
   final String company_name;
   final String our_message;
   final String our_vision;
+  final String note;
 
   const AboutUsWidget({
     Key? key,
@@ -25,7 +26,7 @@ class AboutUsWidget extends StatefulWidget {
     required this.facebook,
     required this.company_name,
     required this.our_message,
-    required this.our_vision,
+    required this.our_vision,required this.note,
   }) : super(key: key);
 
   @override
@@ -227,6 +228,40 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                     child: GestureDetector(
                       child: Text(
                           widget.facebook != null ? widget.facebook : '',
+                          style: StylePlatform.styleourmessag),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: DecoPlatform.decosaleandbuy,
+                    padding: PaddingPlatform.three,
+                    height: 40,
+                    margin: PaddingPlatform.five,
+                    child: const Text(StringPlatform.note,
+                        style: StylePlatform.styleourmessag),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: DecoPlatform.decosaleandbuy,
+                    padding: PaddingPlatform.three,
+                    height: 40,
+                    margin: PaddingPlatform.five,
+                    child: GestureDetector(
+                      child: Text(
+                          widget.note != null ? widget.note : '',
                           style: StylePlatform.styleourmessag),
                     ),
                   ),
