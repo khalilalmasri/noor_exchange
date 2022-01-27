@@ -23,7 +23,7 @@ class StringPlatform {
   static const String transfer = " للتواصل: قسم الحوالات";
   static const String Title = "عفرين/دوار نيروز";
   static const String phone = "84  222  666  9639+";
-  static const String phonetrans = "04 35 664 538 09+";
+  static const String phonetrans = "04 35 664 538 90+";
   static const String turky = "ليرة تركية";
   static const String insertvalue = "   أدخل القيمة بال";
   static const String ourmasseg =

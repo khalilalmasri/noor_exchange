@@ -105,7 +105,8 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                                 } else {
                                   result_buy_calculate_secondary.isNotEmpty
                                       ? controllerQtySale.text =
-                                          result_buy_calculate_secondary
+                                      double.parse(result_buy_calculate_secondary).toStringAsFixed(2)
+                                          .toString()
                                       : controllerQtySale.text;
                                 }
                               });
@@ -130,10 +131,12 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                           child: MaterialButton(
                             onPressed: () {
                               setState(() {
+
                                 if (main_currency) {
                                   result_sale_calculate.isNotEmpty
                                       ? controllerQtyBuy.text =
-                                          result_sale_calculate
+                                      double.parse(result_sale_calculate).toStringAsFixed(2)
+                                          .toString()
                                       : controllerQtyBuy.text;
                                 } else {
                                   result_sale_calculate_secondary.isNotEmpty
@@ -168,18 +171,21 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                               controller: controllerQtySale,
                               style: StylePlatform.stylesaleandbuywhite,
                               onChanged: (value) {
+
                                 main_currency = true;
                                 secondary_currency = false;
                                 setState(() {
                                   value.isNotEmpty
                                       ? m = (double.parse(value) *
                                               widget.price_sale)
+                                      .toStringAsFixed(2)
                                           .toString()
                                       : m = "";
                                   value.isNotEmpty
                                       ? result_buy_calculate =
                                           (double.parse(value) *
                                                   widget.price_sale)
+                                              .toStringAsFixed(2)
                                               .toString()
                                       : result_buy_calculate = "";
                                   value.isNotEmpty
@@ -229,7 +235,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      flex: 7,
+                      flex: 10,
                       child: Container(
                         alignment: Alignment.center,
                         decoration: DecoPlatform.decosaleandbuy,
@@ -242,6 +248,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                             controller: controllerQtyBuy,
                             style: StylePlatform.stylesaleandbuywhite,
                             onChanged: (value) {
+
                               main_currency = false;
                               secondary_currency = true;
                               setState(() {
