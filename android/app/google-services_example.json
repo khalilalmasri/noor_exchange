@@ -7,35 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:744510347861:android:ef52774f2e3d73e38852dc",
-        "android_client_info": {
-          "package_name": "com.alnoorexchange.alnoor"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "744510347861-hochaopu3l50rr6cm9me3d9tcn62cmek.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCSmgyRyfMhlHggeBolB3ap-96nluObTs8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "744510347861-hochaopu3l50rr6cm9me3d9tcn62cmek.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:744510347861:android:590a89e719f008d18852dc",
         "android_client_info": {
           "package_name": "com.alnoorexchange.alnoor"

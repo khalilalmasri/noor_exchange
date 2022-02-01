@@ -18,6 +18,12 @@ class AboutUsScreen extends StatefulWidget {
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
   @override
+  void initState() {
+    // context.read<SplashBloc>().add(LoadAboutData());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<SplashBloc, SplashState>(builder: (context, state) {
       if (state is LoadSplashData) {

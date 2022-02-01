@@ -20,6 +20,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     List<Widget> listPrice = [];
 
     ApiPriceCurrencyConstant.pricesCurrencyResponse.map((e) {

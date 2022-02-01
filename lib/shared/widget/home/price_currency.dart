@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:alnoor/shared/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:alnoor/appbar.dart';
+import 'package:intl/intl.dart';
 import '../../them.dart';
 import 'package:alnoor/main.dart';
 
@@ -32,6 +33,7 @@ class PriceCurrency extends StatefulWidget {
 class _PriceCurrencyState extends State<PriceCurrency> {
   @override
   Widget build(BuildContext context) {
+    var formatter = NumberFormat('#,##,000');
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
       child: Stack(
@@ -130,7 +132,8 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                         height: 40,
                         margin: const EdgeInsets.symmetric(vertical: 3),
                         child: Text(
-                          widget.price_sale.toString(),
+                            widget.price_sale>100?  formatter.format(widget.price_sale):widget.price_sale.toString(),
+
                           style: StylePlatform.stylesaleandbuy,
                         ),
                       ),
@@ -149,7 +152,9 @@ class _PriceCurrencyState extends State<PriceCurrency> {
                         padding: PaddingPlatform.three,
                         height: 40,
                         margin: const EdgeInsets.symmetric(vertical: 3),
-                        child: Text(widget.price_buy.toString(),
+                        child: Text(
+                            widget.price_buy>100?  formatter.format(widget.price_buy):widget.price_buy.toString(),
+
                             style: StylePlatform.stylesaleandbuy),
                       ),
                     ),

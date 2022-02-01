@@ -3,6 +3,7 @@ import 'package:alnoor/core/network/model/about_us/about_us.dart';
 import 'package:alnoor/core/network/model/ads/ads.dart';
 import 'package:alnoor/core/network/model/fcm_token/fcm_token.dart';
 import 'package:alnoor/core/network/model/price_currency/response_price_currency.dart';
+import 'package:alnoor/core/network/model/v2/active_prices_about_us/response_prices_about_us.dart';
 import 'package:alnoor/core/storage/local_data_shared_preference.dart';
 import 'package:dio/dio.dart';
 import 'package:alnoor/core/network/repository/price_currency/price_currency_repository.dart';
@@ -62,5 +63,11 @@ class ApiRepository implements PriceCurrencyRepository {
   Future<AboutUsResponse> getAboutUs() async {
     await this.addAuthenticationHeader();
     return await __requestPriceCurrency!.getAboutUs();
+  }
+
+  @override
+  Future<ListItemsPriceAbout> getPrices_v2() async{
+    await this.addAuthenticationHeader();
+    return __requestPriceCurrency!.getPrices_v2();
   }
 }

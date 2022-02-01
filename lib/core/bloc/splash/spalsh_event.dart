@@ -11,4 +11,6 @@ class LoadSplashData extends SplashEvent {}
 
 class LoadPriceData extends SplashEvent {}
 
+class LoadAboutData extends SplashEvent {}
+
 class LoadAdsData extends SplashEvent {}

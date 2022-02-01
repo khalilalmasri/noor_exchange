@@ -1,5 +1,4 @@
 import 'package:alnoor/shared/widget/error/no_internet_widget.dart';
-import 'package:alnoor/ui/tab_pages/calculaterpage.dart';
 import 'package:alnoor/core/bloc/splash/bloc.dart';
 import 'package:alnoor/core/network/api/api_price_currency_constant.dart';
 import 'package:alnoor/shared/widget/adress_bar.dart';
@@ -9,11 +8,10 @@ import 'package:alnoor/shared/widget/home/refreshwe.dart';
 import 'package:alnoor/shared/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:alnoor/appbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/src/provider.dart';
 import '../../shared/them.dart';
-import 'package:alnoor/main.dart';
+
 
 class PricePage extends StatefulWidget {
   PricePage({Key? key}) : super(key: key);
@@ -38,21 +36,32 @@ class _PricePageState extends State<PricePage> {
         return _pageContent();
       } else if (state is SplashLoading) {
         return _pageContent();
-      } else if (state is SplashNoInternetConnection) {
-        return NoInternetWidget(
-          message: StringPlatform.no_internet,
-          onPressed: () {
-            context.read<SplashBloc>().add(LoadPriceData());
-          },
-        );
       } else if (state is SplashAdsNoInternetConnection) {
-        return _pageContent();
+        return _pageContent(noInternnet: true);
+      } else if (state is SplashNoInternetConnection) {
+        return Stack(
+          children: [
+            Container(
+              height: 200,
+              child: NoInternetWidget(
+                message: StringPlatform.no_internet,
+                onPressed: () {
+                  context.read<SplashBloc>().add(LoadPriceData());
+                },
+              ),
+            )
+          ],
+        );
+      } else if (state is SplashHasDataWithNoInternet) {
+        return
+          _pageContent(noInternnet: true);
+
       } else
         return Text('no bloc');
     });
   }
 
-  Widget _pageContent() {
+  Widget _pageContent({bool noInternnet: false}) {
     List<Widget> listPrice = [];
 
     ApiPriceCurrencyConstant.pricesCurrencyResponse.map((e) {
@@ -66,7 +75,18 @@ class _PricePageState extends State<PricePage> {
         title: '',
       ));
     }).toList();
+
     listPrice.insert(0, PhoneContactUsWidget());
+
+    if (noInternnet)
+      listPrice.insert(
+          0,
+          NoInternetWidget(
+            message: StringPlatform.no_internet,
+            onPressed: () {
+              context.read<SplashBloc>().add(LoadPriceData());
+            },
+          ));
     listPrice.insert(listPrice.length, AdressBar());
     listPrice.insert(
         listPrice.length,

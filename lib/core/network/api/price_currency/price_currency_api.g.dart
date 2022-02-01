@@ -8,7 +8,7 @@ part of 'price_currency_api.dart';
 
 class _RequestPriceCurrency implements RequestPriceCurrency {
   _RequestPriceCurrency(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://alnoorexchange.com/api/v1/';
+    baseUrl ??= 'https://alnoorexchange.com/api/';
   }
 
   final Dio _dio;
@@ -23,7 +23,7 @@ class _RequestPriceCurrency implements RequestPriceCurrency {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListItemsPriceCurrency>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'currency-price',
+                .compose(_dio.options, 'v1/currency-price',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ListItemsPriceCurrency.fromJson(_result.data!);
@@ -38,7 +38,7 @@ class _RequestPriceCurrency implements RequestPriceCurrency {
     _data.addAll(fcmTokenRequest.toJson());
     final _result = await _dio.fetch<String>(_setStreamType<String>(
         Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, 'post-fcm-token',
+            .compose(_dio.options, 'v2/post-fcm-token',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!;
@@ -53,7 +53,7 @@ class _RequestPriceCurrency implements RequestPriceCurrency {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ListItemsAds>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'public-ads',
+                .compose(_dio.options, 'v1/public-ads',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ListItemsAds.fromJson(_result.data!);
@@ -68,10 +68,25 @@ class _RequestPriceCurrency implements RequestPriceCurrency {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AboutUsResponse>(
             Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'company_info',
+                .compose(_dio.options, 'v1/company_info',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = AboutUsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ListItemsPriceAbout> getPrices_v2() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ListItemsPriceAbout>(
+            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, 'v2/currency-price',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ListItemsPriceAbout.fromJson(_result.data!);
     return value;
   }
 

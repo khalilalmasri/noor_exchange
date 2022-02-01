@@ -12,14 +12,10 @@ class InitialSplash extends SplashState {}
 
 class SplashLoading extends SplashState {}
 
-class SplashHasData extends SplashState {
+class SplashHasData extends SplashState {}
+class SplashHasDataWithNoInternet extends SplashState {}
 
 
-  const SplashHasData();
-
-  @override
-  List<Object> get props => [];
-}
 
 class SplashNoData extends SplashState {
   final String message;

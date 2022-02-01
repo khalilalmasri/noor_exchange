@@ -4,6 +4,7 @@ import 'package:alnoor/shared/widget/adress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:alnoor/appbar.dart';
+import 'package:intl/intl.dart';
 import '../../words.dart';
 
 class CalculatorWidget extends StatefulWidget {
@@ -48,6 +49,7 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var formatter = NumberFormat('#,##,000');
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
       child: Stack(
@@ -161,7 +163,9 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                       Expanded(
                           flex: 1,
                           child: Center(
-                              child: Text(widget.price_sale.toString(),
+                              child: Text(
+                                  widget.price_sale>100?  formatter.format(widget.price_sale):widget.price_sale.toString(),
+
                                   style: StylePlatform.StyleTile))),
                       Expanded(
                           flex: 2,
@@ -224,7 +228,8 @@ class _CalculatorWidgetState extends State<CalculatorWidget> {
                           flex: 1,
                           child: Center(
                             child: Text(
-                              widget.price_buy.toString(),
+                              widget.price_buy>100?  formatter.format(widget.price_buy):widget.price_buy.toString(),
+
                               style: StylePlatform.StyleTile,
                             ),
                           )),

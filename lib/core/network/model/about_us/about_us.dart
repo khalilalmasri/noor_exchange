@@ -73,7 +73,7 @@ class ValueAboutUs extends Equatable {
   @JsonKey(name: 'facebook', defaultValue: '')
   final String facebook;
 
-  @JsonKey(name: 'phone_assistant')
+  @JsonKey(name: 'phone_assistant' )
   final String phoneAssistant;
 
   @JsonKey(name: 'phone_manager')

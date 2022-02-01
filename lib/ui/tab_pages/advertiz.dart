@@ -27,6 +27,12 @@ class AdScreen extends StatefulWidget {
 
 class _AdScreenState extends State<AdScreen> {
   @override
+  void initState() {
+    context.read<SplashBloc>().add(LoadAdsData());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<SplashBloc, SplashState>(builder: (context, state) {
       if (state is LoadSplashData) {

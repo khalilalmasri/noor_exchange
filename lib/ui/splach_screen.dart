@@ -50,7 +50,8 @@ class _SplashScreenState extends State<SplashScreen> {
             return _getPageContent();
           } else if (state is SplashLoading) {
             return _getPageContent();
-          }else if (state is SplashNoInternetConnection) {
+          }
+          else if (state is SplashNoInternetConnection) {
             return
               NoInternetWidget(
               message: StringPlatform.no_internet,
@@ -58,6 +59,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 context.read<SplashBloc>().add(LoadSplashData());
               },
             );
+          }
+
+          else if (state is SplashHasDataWithNoInternet) {
+            return _startSplashScreenToHomePage();
           } else {
             return Center(child: Text(""));
           }

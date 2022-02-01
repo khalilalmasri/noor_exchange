@@ -30,6 +30,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     if (event is LoadPriceData) {
       yield* _mapLoadPrice(event);
     }
+    if (event is LoadAboutData) {
+      yield* _mapLoadAbout(event);
+    }
   }
 
   Stream<SplashState> _mapLoadSplashToState(LoadSplashData event) async* {
@@ -47,23 +50,31 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         });
       }
 
-      var prices = await repository.getPrices();
-      if (prices != null) {
-        ApiPriceCurrencyConstant.pricesCurrencyResponse = prices.listprice;
-        await StorageUtil.setSerialize('prices_currency',
-            ListItemsPriceCurrency(listprice: prices.listprice));
+      var data = await repository.getPrices_v2();
+      if (data != null) {
+        ApiPriceCurrencyConstant.pricesAboutResponse = data.listActive;
+        ApiPriceCurrencyConstant.pricesCurrencyResponse =
+            ApiPriceCurrencyConstant.pricesAboutResponse!.prices;
+        ApiPriceCurrencyConstant.aboutUs =
+            ApiPriceCurrencyConstant.pricesAboutResponse!.aboutUs;
+        await StorageUtil.setSerialize(
+            'prices_currency',
+            ListItemsPriceCurrency(
+                listprice: ApiPriceCurrencyConstant.pricesCurrencyResponse));
+        await StorageUtil.setSerialize('about_us_local',
+            AboutUsResponse(aboutUs: ApiPriceCurrencyConstant.aboutUs!));
       }
 
-      var ads = await repository.getAds();
-      if (ads != null) {
-        ApiPriceCurrencyConstant.AdsResponse = ads.listAds;
-      }
-      var about_us = await repository.getAboutUs();
-      if (about_us != null) {
-        await StorageUtil.setSerialize(
-            'about_us_local', AboutUsResponse(aboutUs: about_us.aboutUs));
-        ApiPriceCurrencyConstant.aboutUs = about_us.aboutUs;
-      }
+      // var ads = await repository.getAds();
+      // if (ads != null) {
+      //   ApiPriceCurrencyConstant.AdsResponse = ads.listAds;
+      // }
+      // var about_us = await repository.getAboutUs();
+      // if (about_us != null) {
+      //   await StorageUtil.setSerialize(
+      //       'about_us_local', AboutUsResponse(aboutUs: about_us.aboutUs));
+      //   ApiPriceCurrencyConstant.aboutUs = about_us.aboutUs;
+      // }
 
       yield SplashHasData();
     } on DioError catch (e) {
@@ -89,7 +100,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         ApiPriceCurrencyConstant.pricesCurrencyResponse =
             ApiPriceCurrencyConstant.listItemsPriceCurrency!.listprice;
         if (ApiPriceCurrencyConstant.pricesCurrencyResponse != [])
-          yield SplashHasData();
+          yield SplashHasDataWithNoInternet();
         else
           yield SplashNoInternetConnection();
       }
@@ -119,9 +130,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         ApiPriceCurrencyConstant.pricesCurrencyResponse =
             ApiPriceCurrencyConstant.listItemsPriceCurrency!.listprice;
         if (ApiPriceCurrencyConstant.pricesCurrencyResponse != [])
-
           yield SplashAdsNoInternetConnection();
-
       }
     }
   }
@@ -131,8 +140,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
     try {
       var prices = await repository.getPrices();
-      if (prices != null)
+      if (prices != null) {
         ApiPriceCurrencyConstant.pricesCurrencyResponse = prices.listprice;
+        await StorageUtil.setSerialize('prices_currency',
+            ListItemsPriceCurrency(listprice: prices.listprice));
+      }
 
       yield SplashHasData();
     } on DioError catch (e) {
@@ -143,13 +155,47 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         ApiPriceCurrencyConstant.listItemsPriceCurrency =
             ListItemsPriceCurrency.fromJson(
                 await StorageUtil.readSerialize('prices_currency'));
+        // ApiPriceCurrencyConstant.aboutUsResponse = AboutUsResponse.fromJson(
+        //     await StorageUtil.readSerialize('about_us_local'));
+        // ApiPriceCurrencyConstant.aboutUs =
+        //     ApiPriceCurrencyConstant.aboutUsResponse!.aboutUs;
+        ApiPriceCurrencyConstant.pricesCurrencyResponse =
+            ApiPriceCurrencyConstant.listItemsPriceCurrency!.listprice;
+        if (ApiPriceCurrencyConstant.pricesCurrencyResponse != [])
+          yield SplashHasDataWithNoInternet();
+        else
+          yield SplashNoInternetConnection();
+      }
+    }
+  }
+
+  Stream<SplashState> _mapLoadAbout(LoadAboutData event) async* {
+    yield SplashLoading();
+
+    try {
+      var about_us = await repository.getAboutUs();
+      if (about_us != null) {
+        await StorageUtil.setSerialize(
+            'about_us_local', AboutUsResponse(aboutUs: about_us.aboutUs));
+        ApiPriceCurrencyConstant.aboutUs = about_us.aboutUs;
+      }
+      yield SplashHasData();
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        yield SplashNoInternetConnection();
+      } else if (e.type == DioErrorType.other) {
+        // ApiPriceCurrencyConstant.listItemsPriceCurrency =
+        //     ListItemsPriceCurrency.fromJson(
+        //         await StorageUtil.readSerialize('prices_currency'));
         ApiPriceCurrencyConstant.aboutUsResponse = AboutUsResponse.fromJson(
             await StorageUtil.readSerialize('about_us_local'));
         ApiPriceCurrencyConstant.aboutUs =
             ApiPriceCurrencyConstant.aboutUsResponse!.aboutUs;
-        ApiPriceCurrencyConstant.pricesCurrencyResponse =
-            ApiPriceCurrencyConstant.listItemsPriceCurrency!.listprice;
-        if (ApiPriceCurrencyConstant.pricesCurrencyResponse != [])
+        // ApiPriceCurrencyConstant.pricesCurrencyResponse =
+        //     ApiPriceCurrencyConstant.listItemsPriceCurrency!.listprice;
+        // if (ApiPriceCurrencyConstant.pricesCurrencyResponse != [])
+        if (ApiPriceCurrencyConstant.aboutUs != null)
           yield SplashHasData();
         else
           yield SplashNoInternetConnection();
